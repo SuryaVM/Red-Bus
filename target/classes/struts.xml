@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "/Users/surya-22964/Downloads/struts-2.1.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<package name="struts" namespace="/" extends="struts-default">
+		<action name="login" class="com.login.LoginAction"
+			method="execute">
+			<result type="redirect" name="success">booking.jsp</result>
+			<result type="redirect" name="error">error.jsp</result>
+		</action>
+
+		<action name="search" class="com.booking.SearchAction"
+			method="execute">
+			<result type="redirect" name="error">error.jsp</result>
+		</action>
+		
+		<action name="mybookings" class="com.booking.MyBookingsAction"
+			method="execute">
+			<result type="redirect" name="error">error.jsp</result>
+		</action>
+		
+		<action name="signup" class="com.login.SignupAction"
+			method="execute">
+			<result type="redirect" name="success">index.jsp</result>
+			<result name="error">signup.jsp</result>
+		</action>
+
+		<action name="book" class="com.booking.BookAction"
+			method="execute">
+			<result type="redirect" name="error">error.jsp</result>
+		</action>
+		
+		<action name="cancel" class="com.booking.CancelAction"
+			method="execute">
+			<result type="redirect" name="error">error.jsp</result>
+		</action>
+
+	</package>
+
+</struts>
