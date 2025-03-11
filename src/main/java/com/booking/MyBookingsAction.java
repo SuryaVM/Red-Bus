@@ -25,11 +25,18 @@ public class MyBookingsAction extends ActionSupport {
 	public String execute() {
 		Cookie cookies[] = ServletActionContext.getRequest().getCookies();
 		String username = Crud.validateCookie(cookies);
-		if(username.equals("")) {
-			HttpServletResponse response = ServletActionContext.getResponse();
-			return "error";
-		}
 		HttpServletResponse response = ServletActionContext.getResponse();
+		if(username.equals("")) {
+		    response.setContentType("application/json;charset=utf-8");
+		    response.setStatus(HttpServletResponse.SC_FORBIDDEN); // 403 Forbidden
+		    try {
+				response.getWriter().write("{\"error\": true, \"message\": \"Invalid session\"}");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    return null;
+		}
 		response.setContentType("application/json charset=utf-8");
 
 
