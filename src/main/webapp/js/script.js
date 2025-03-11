@@ -47,7 +47,10 @@ function searchAndLoadBuses() {
 							`;
 					busContainer.innerHTML += busCard;
 				});
-			}
+			}else if(xhr.status === 302) {
+			            // Manually redirect the browser
+			            window.location.href = xhr.getResponseHeader("Location");
+			} 
 			else {
 				const busContainer = document.getElementById('results-section');
 				busContainer.innerHTML = `<div id="search-message" class="searching-progress">&#x1F50E; &#x1F50D; Searching in progress...</div>
@@ -111,6 +114,7 @@ function myBookings() {
 				bookingsSection.appendChild(bookingCard);
 			});
 		}
+		
 	};
 	xhr.send();
 	//xhr.send(params);
@@ -171,6 +175,10 @@ document.getElementById('my-bookings-section').addEventListener('click', functio
 				}
 				myBookings();
 			}
+			else if(xhr.status === 302) {
+						// Manually redirect the browser
+						window.location.href = xhr.getResponseHeader("Location");
+					}
 		};
 		xhr.send(params);
 	}
@@ -219,8 +227,9 @@ document.getElementById('results-section').addEventListener('click', function(ev
 					if (xhr.status === 200) {
 						alert(`Seat booked successfully for ${seatType}!`);
 						searchAndLoadBuses();
-					} else {
-						alert("Failed to book the seat. Please try again.");
+					} else if(xhr.status === 302) {
+						// Manually redirect the browser
+						window.location.href = xhr.getResponseHeader("Location");
 					}
 				}
 			};

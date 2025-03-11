@@ -27,7 +27,6 @@ public class MyBookingsAction extends ActionSupport {
 		String username = Crud.validateCookie(cookies);
 		if(username.equals("")) {
 			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setStatus(401);
 			return "error";
 		}
 		HttpServletResponse response = ServletActionContext.getResponse();

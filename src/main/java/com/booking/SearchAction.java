@@ -26,7 +26,6 @@ public class SearchAction extends ActionSupport {
 			System.out.println("username from cookie: "+username);
 			if(username.equals("")) {
 				HttpServletResponse response = ServletActionContext.getResponse();
-				response.setStatus(401);
 				return "error";
 			}
 		    HttpServletResponse response = ServletActionContext.getResponse();

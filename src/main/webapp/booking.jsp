@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/styles.css">
 
 </head>
-<body data-username="<s:property value='username' />">
+<body>
 	<header>
 		<div class="logo">
 			<img src="images/Redbuslogo.png"> RedBus Booking Platform

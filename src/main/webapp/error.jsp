@@ -4,7 +4,7 @@
 <html>
 <head><title>Error</title></head>
 <body>
-    <h2>Invalid username or password. Please, <a href=index.jsp>Try again</a></h2>
+    <h2 style="color: red;">Oops! Something went wrong. Please, <a href=index.jsp>Try again</a></h2>
     
 </body>
 </html>
