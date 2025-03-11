@@ -1,22 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login Page</title>
+<title>RedBus Signup</title>
 <style>
 body {
 	font-family: 'Poppins', sans-serif;
-	background-image: url('images/login_background.png');
+	background-image: url('images/signup_background.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start; /* Move form to the left */
 	align-items: center;
 	height: 100vh;
 	margin: 0;
+	padding-left: 180px; /* Optional: add some space from the left edge */
 }
 
 form {
@@ -25,13 +26,11 @@ form {
 	border-radius: 20px;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 	width: 320px;
-	height: 380px;
 	text-align: center;
 	transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	margin-top: -300px; /* Moves form upward */
+	justify-content: left;
 }
 
 form:hover {
@@ -39,18 +38,6 @@ form:hover {
 	box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
-p {
-	color: #D84E55;
-	font-size: 20px;
-	font-weight: bold;
-	margin-bottom: 20px;
-}
-a {
-	color: #D84E55;
-	font-size: 17px;
-	font-weight: bold;
-	margin-bottom: 20px;
-}
 h2 {
 	color: #D84E55;
 	font-size: 28px;
@@ -59,17 +46,17 @@ h2 {
 }
 
 label {
+	width: 100%;
 	font-size: 18px;
 	font-weight: 600;
 	color: #555;
-	width: 100%; /* Ensures label takes full width */
-	text-align: left; /* Keeps label text aligned to the left */
 	display: flex;
+	justify-content: flex-start;
 	align-items: center;
 	margin-bottom: 8px;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="email"], input[type="password"] {
 	width: 100%;
 	padding: 12px;
 	margin-bottom: 20px;
@@ -80,7 +67,8 @@ input[type="text"], input[type="password"] {
 	transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus
+	{
 	border-color: #ff4757;
 	box-shadow: 0 0 8px rgba(255, 117, 140, 0.5);
 }
@@ -98,23 +86,24 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-	background-color: #b83a45;
+	background-color: #e06c75;
 	transform: scale(1.05);
 }
 </style>
 </head>
 <body>
-	<form action="login" method="post">
-		<h2>Welcome to 🚍RedBus! Signin</h2>
+	<form action="signup" method="post">
+		<h2>🚍 RedBus Signup</h2>
 
-		<label>👤 Username:</label> <input type="text" name="username" required>
-
-		<label>🔒 Password:</label> <input type="password" name="password" required>
-
-		<input type="submit" value="Login">
-		<p >If New user!</p>
-		<a href="signup.jsp">Register here</a>
+		<label>👤 Full Name:</label> <input type="text" name="full_name"
+			placeholder="Enter your full name" required> <label>📧
+			Email:</label> <input type="email" name="email"
+			placeholder="Enter your email" required> <label>👥
+			Username:</label> <input type="text" name="username"
+			placeholder="Choose a username" required> <label>🔒
+			Password:</label> <input type="password" name="password"
+			placeholder="Create a password" required> <input
+			type="submit" value="Signup">
 	</form>
-
 </body>
 </html>
