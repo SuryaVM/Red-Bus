@@ -17,12 +17,15 @@ function searchAndLoadBuses() {
 		xhr.open("GET", `search.action?${params}`, true);
 		xhr.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status === 200) {
-				console.log("Response received!");
-				busContainer.innerHTML = "";
+				console.log(xhr.response);
+				const contentType = xhr.getResponseHeader("Content-Type");
+				if (contentType.includes("application/json")) {
+					console.log("Response received!");
+					busContainer.innerHTML = "";
 
-				const buses = JSON.parse(xhr.responseText);
-				buses.forEach(bus => {
-					const busCard = `
+					const buses = JSON.parse(xhr.responseText);
+					buses.forEach(bus => {
+						const busCard = `
 								<div class="bus-card" data-bus='${JSON.stringify(bus)}'>
 									<div style="color:rgb(252, 13, 29);" class="bus-title">${bus.bus_name}</div>
 									<div class="bus-info" id="busId"><strong>Bus ID:</strong> ${bus.id}</div>
@@ -45,12 +48,14 @@ function searchAndLoadBuses() {
 									<button id="book-btn" class="button">Book Now</button>
 								</div>
 							`;
-					busContainer.innerHTML += busCard;
-				});
-			}else if(xhr.status === 302) {
-			            // Manually redirect the browser
-			            window.location.href = xhr.getResponseHeader("Location");
-			} 
+						busContainer.innerHTML += busCard;
+					});
+				}
+
+			} else if (this.readyState === 4 && this.status === 403) {
+				// Manually redirect the browser
+				window.location.href = '/RedBus/error.jsp';
+			}
 			else {
 				const busContainer = document.getElementById('results-section');
 				busContainer.innerHTML = `<div id="search-message" class="searching-progress">&#x1F50E; &#x1F50D; Searching in progress...</div>
@@ -114,7 +119,11 @@ function myBookings() {
 				bookingsSection.appendChild(bookingCard);
 			});
 		}
-		
+		else if (this.readyState === 4 && this.status === 403) {
+			// Manually redirect the browser
+			window.location.href = '/RedBus/error.jsp';
+		}
+
 	};
 	xhr.send();
 	//xhr.send(params);
@@ -175,10 +184,10 @@ document.getElementById('my-bookings-section').addEventListener('click', functio
 				}
 				myBookings();
 			}
-			else if(xhr.status === 302) {
-						// Manually redirect the browser
-						window.location.href = xhr.getResponseHeader("Location");
-					}
+			else if (this.readyState === 4 && this.status === 403) {
+				// Manually redirect the browser
+				window.location.href = '/RedBus/error.jsp';
+			}
 		};
 		xhr.send(params);
 	}
@@ -223,14 +232,12 @@ document.getElementById('results-section').addEventListener('click', function(ev
 			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 			xhr.onreadystatechange = function() {
-				if (xhr.readyState === 4) {
-					if (xhr.status === 200) {
-						alert(`Seat booked successfully for ${seatType}!`);
-						searchAndLoadBuses();
-					} else if(xhr.status === 302) {
-						// Manually redirect the browser
-						window.location.href = xhr.getResponseHeader("Location");
-					}
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					alert(`Seat booked successfully for ${seatType}!`);
+					searchAndLoadBuses();
+				} else if (this.readyState === 4 && this.status === 403) {
+					// Manually redirect the browser
+					window.location.href = '/RedBus/error.jsp';
 				}
 			};
 

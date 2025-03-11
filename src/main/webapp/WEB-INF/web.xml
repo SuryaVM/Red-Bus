@@ -23,10 +23,10 @@
         <url-pattern>/*</url-pattern> <!-- Routes all requests through Struts -->
     </filter-mapping>
     
-    <error-page>
+   <!--  <error-page>
     <error-code>401</error-code>
-    <location>/error.jsp</location> <!-- Or a JSP if you want -->
-	</error-page>
+    <location>/error.jsp</location> Or a JSP if you want
+	</error-page -->
   	<!-- Spring Boot Dispatcher Servlet -->
 <!-- <servlet>
     <servlet-name>dispatcher</servlet-name>
