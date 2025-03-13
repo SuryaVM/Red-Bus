@@ -24,8 +24,8 @@ form {
 	padding: 40px;
 	border-radius: 20px;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-	width: 320px;
-	height: 380px;
+	width: 330px;
+	height: 400px;
 	text-align: center;
 	transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 	display: flex;
@@ -112,6 +112,7 @@ input[type="submit"]:hover {
 		<label>🔒 Password:</label> <input type="password" name="password" required>
 
 		<input type="submit" value="Login">
+        <p  style=" font-size:15px; color: red;"><s:property value="error"/></p>
 		<p >If New user!</p>
 		<a href="signup.jsp">Register here</a>
 	</form>

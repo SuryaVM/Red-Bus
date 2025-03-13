@@ -97,6 +97,11 @@
 			<artifactId>struts2-config-browser-plugin</artifactId>
 			<version>7.0.3</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 
 	</dependencies>
 

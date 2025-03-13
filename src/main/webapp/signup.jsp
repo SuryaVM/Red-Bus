@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,6 +105,7 @@ input[type="submit"]:hover {
 			Password:</label> <input type="password" name="password"
 			placeholder="Create a password" required> <input
 			type="submit" value="Signup">
+			<p  style=" font-size:15px; color: red;"><s:property value="error"/></p>
 	</form>
 </body>
 </html>

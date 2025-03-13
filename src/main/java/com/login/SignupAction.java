@@ -15,6 +15,13 @@ public class SignupAction extends ActionSupport {
 	private String password;
 	private String email;
 	private String full_name;
+	private String error="";
+	public String getError() {
+		return error;
+	}
+	public void setError(String error) {
+		this.error = error;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -49,7 +56,11 @@ public class SignupAction extends ActionSupport {
 	@Override
 	public String execute() {
 		boolean isvalid=Crud.addUser(username,password,email,full_name);
-		return isvalid ? "success" : "error";
+		if(isvalid) {
+			return "success";
+		}
+		error="*Username or Email already exists!";
+		return "error";
 	}
 
 }

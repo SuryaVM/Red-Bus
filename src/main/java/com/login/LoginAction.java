@@ -19,6 +19,7 @@ public class LoginAction extends ActionSupport {
 
 	private String username;
 	private String password;
+	private String error="";
 
 	@Override
 	public String execute() {
@@ -43,7 +44,16 @@ public class LoginAction extends ActionSupport {
 
 			return "success";
 		}
+		error="*Invalid Username or Password!";
 		return "error";
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 
 	public String getUsername() {

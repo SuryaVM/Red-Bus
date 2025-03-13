@@ -9,7 +9,7 @@
 		<action name="login" class="com.login.LoginAction"
 			method="execute">
 			<result type="redirect" name="success">booking.jsp</result>
-			<result type="redirect" name="error">error.jsp</result>
+			<result name="error">index.jsp</result>
 		</action>
 
 		<action name="search" class="com.booking.SearchAction"
